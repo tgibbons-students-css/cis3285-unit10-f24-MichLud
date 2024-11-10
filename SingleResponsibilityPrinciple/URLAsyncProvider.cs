@@ -11,6 +11,8 @@ namespace SingleResponsibilityPrinciple
             this.origProvider = origProvider;
         }
 
+
+    /*
         public IEnumerable<string> GetTradeData()
         {
             Task<IEnumerable<string>> task = Task.Run(() => GetDataAsync());
@@ -25,5 +27,11 @@ namespace SingleResponsibilityPrinciple
             return Task.Run(() => origProvider.GetTradeData());
         }
 
+        */
+
+        Task<IEnumerable<string>> ITradeDataProvider.GetTradeData()
+        {
+            return Task.Run(() => origProvider.GetTradeData());
+        }
     }
 }

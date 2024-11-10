@@ -11,9 +11,9 @@ namespace SingleResponsibilityPrinciple
             _tradeDataProvider = tradeDataProvider;
         }
 
-        public IEnumerable<string> GetTradeData()
+        public async Task<IEnumerable<string>> GetTradeData()
         {
-            IEnumerable<string> trades = _tradeDataProvider.GetTradeData();
+            IEnumerable<string> trades = await _tradeDataProvider.GetTradeData();
 
             // Adjust Trades from GBP to EUR in all the text lines.
             trades = trades.Select(trade => trade.Replace("GBP", "EUR"));
